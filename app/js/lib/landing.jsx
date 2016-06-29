@@ -4,8 +4,8 @@ const Landing = new React.createClass({
   render: function() {
     return (
       <section>
-        <button>LOGIN</button>
-        <button>REGISTER</button>
+        <button><a href="#/login">LOGIN</a></button>
+        <button><a href="#/register">REGISTER</a></button>
       </section>
     );
   }

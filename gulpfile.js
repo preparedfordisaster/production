@@ -8,7 +8,7 @@ const maps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 
 const serverScripts = ['index.js', 'lib/*.js', 'test/*.js', 'models/*.js', 'routes/*.js'];
-const appScripts = ['./app/**/*.jsx'];
+const appScripts = ['./app/**/*.jsx', './app/scss/*.scss', './app/index.html'];
 
 gulp.task('watch', () => {
   gulp.watch(serverScripts, ['lint', 'test']);
