@@ -37,17 +37,25 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     "mocha": "^2.4.5"
 =======
+=======
+>>>>>>> 07cc1c2a24c254a62dd863fc936a5185d2308f73
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "mocha": "^2.4.5",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+<<<<<<< HEAD
     "react-router": "^2.5.1",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
 >>>>>>> Stashed changes
+=======
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0"
+>>>>>>> 07cc1c2a24c254a62dd863fc936a5185d2308f73
   }
 }
