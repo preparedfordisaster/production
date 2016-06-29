@@ -12,13 +12,14 @@ const appScripts = ['./app/**/*.jsx'];
 
 gulp.task('watch', () => {
   gulp.watch(serverScripts, ['lint', 'test']);
+  gulp.watch(appScripts, ['webpack:dev']);
 });
 
 gulp.task('webpack:dev', ['scss:dev', 'html:dev', 'img:dev'], () => {
   return gulp.src('app/js/entry.jsx')
     .pipe(webpack({
       output: {
-        filename: 'bundle.js'
+        filename: './bundle.js'
       },
       module: {
         loaders: [
