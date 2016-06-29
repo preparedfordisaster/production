@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom');
 const ReactRouter = require('react-router');
 
 
-var AppMain = new React.createClass({
+var Landing = new React.createClass({
   render: function() {
     return (
       <article>
@@ -15,6 +15,10 @@ var AppMain = new React.createClass({
 });
 
 ReactDOM.render(
-  <AppMain />,
-  document.getElementById('app')
+  <ReactRouter.Router>
+    <ReactRouter.Route path='/' component='Landing'>
+
+    </ReactRouter.Route>
+  </ReactRouter.Router>,
+  destination
 );
