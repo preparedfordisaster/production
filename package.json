@@ -22,6 +22,9 @@
   },
   "homepage": "https://github.com/preparedfordisaster/preparedfordisaster#readme",
   "dependencies": {
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
     "bcrypt": "latest",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
@@ -32,12 +35,13 @@
     "nodemailer": "^2.3.2"
   },
   "devDependencies": {
+    "babel-core": "^6.10.4",
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
+    "eslint-plugin-react": "^5.2.2",
     "gulp": "^3.9.1",
     "gulp-eslint": "^2.0.0",
     "gulp-mocha": "^2.2.0",
-    "mocha": "^2.4.5",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "mocha": "^2.4.5",
@@ -46,6 +50,5 @@
     "react-router": "^2.5.1",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
-
   }
 }
