@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken');
 const passportLocalMongooseEmail = require('passport-local-mongoose-email');
 
 var userSchema = new Schema({
-  username: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
   findHash: { type: String, unique: true }
 });
 
