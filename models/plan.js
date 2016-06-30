@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 var addressSchema = new mongoose.Schema({
   streetAddress: String,
   streetAddressPt2: String,
-  City: String,
-  State: String,
-  Zip: Number
+  city: String,
+  state: String,
+  zip: Number
 });
 
 var baseKitSchema = new mongoose.Schema({
