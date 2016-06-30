@@ -8,17 +8,19 @@ const maps = require('gulp-sourcemaps');
 const sass = require('gulp-sass');
 
 const serverScripts = ['index.js', 'lib/*.js', 'test/*.js', 'models/*.js', 'routes/*.js'];
-const appScripts = ['./app/**/*.jsx'];
+const appScripts = ['./app/**/*.jsx', './app/scss/*.scss', './app/index.html'];
 
 gulp.task('watch', () => {
   gulp.watch(serverScripts, ['lint', 'test']);
+  gulp.watch(appScripts, ['webpack:dev']);
 });
 
 gulp.task('webpack:dev', ['scss:dev', 'html:dev', 'img:dev'], () => {
   return gulp.src('app/js/entry.jsx')
     .pipe(webpack({
+      devtool: 'source-map',
       output: {
-        filename: 'bundle.js'
+        filename: './bundle.js'
       },
       module: {
         loaders: [

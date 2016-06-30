@@ -1,18 +1,16 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const ReactRouter = require('react-router');
+const Lib = require(__dirname + '/lib/index.jsx');
 
-var AppMain = new React.createClass({
-  render: function() {
-    return (
-      <article>
-        <button>LOGIN</button>
-        <button>REGISTER</button>
-      </article>
-    )
-  }
-});
 
 ReactDOM.render(
-  <AppMain />,
-  document.getElementById('app')
+  <ReactRouter.Router>
+    <ReactRouter.Route path='/' component={Lib.Landing}></ReactRouter.Route>
+    <ReactRouter.Route path='/login' component={Lib.Login}></ReactRouter.Route>
+    <ReactRouter.Route path='/register' component={Lib.Register}></ReactRouter.Route>
+    <ReactRouter.Route path='/home' component={Lib.Home}></ReactRouter.Route>
+    <ReactRouter.Route path='/myplan' component={Lib.MyPlan}></ReactRouter.Route>
+  </ReactRouter.Router>,
+  document.querySelector('.app')
 );
