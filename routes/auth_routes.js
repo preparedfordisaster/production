@@ -39,7 +39,7 @@ router.post('/signup', bodyParser, (req, res) => {
   // });
 });
 
-router.post('/signin', bodyParser, passport.authenticate('local', { session: false }),
+router.get('/signin', basicHTTP, passport.authenticate('local', { session: false }),
 (req, res) => {
   console.log(req.user);
   res.status(200).json({ msg: 'login testing' });
