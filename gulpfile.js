@@ -18,6 +18,7 @@ gulp.task('watch', () => {
 gulp.task('webpack:dev', ['scss:dev', 'html:dev', 'img:dev'], () => {
   return gulp.src('app/js/entry.jsx')
     .pipe(webpack({
+      devtool: 'source-map',
       output: {
         filename: './bundle.js'
       },

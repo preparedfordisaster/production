@@ -1,4 +1,5 @@
 const React = require('react');
+const BaseKit = require('./BaseKit.jsx');
 
 const MyPlan = new React.createClass({
   render: function() {
