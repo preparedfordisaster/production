@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require(__dirname + '/../models/user');
 const bodyParser = require('body-parser').json();
+const jwt = require('jsonwebtoken');
 const basicHTTP = require(__dirname + '/../lib/basic_http');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -12,11 +13,10 @@ var router = module.exports = exports = express.Router();
 router.post('/signup', bodyParser, (req, res) => {
   User.register(new User({ username: req.body.username }), req.body.password, (err, user) => {
     if (err) return console.log(err);
-    console.log(user);
-
-    res.status(200).json({ msg: 'just testing' });
-
-    // passport.authenticate('local', { session: false }),
+    res.status(200).json({
+      msg: 'signup testing',
+      token: jwt.sign({ idd: user.hash }, process.env.APP_SECRET)
+    });
   });
 
   // var password = req.body.password;
@@ -41,8 +41,13 @@ router.post('/signup', bodyParser, (req, res) => {
 
 router.get('/signin', basicHTTP, passport.authenticate('local', { session: false }),
 (req, res) => {
-  console.log(req.user);
-  res.status(200).json({ msg: 'login testing' });
+  res.status(200).json({
+    msg: 'login testing',
+    token: jwt.sign({ idd: req.user.hash }, process.env.APP_SECRET)
+  });
+
+  // jwt signing using hash instead of find hash
+
   // User.findOne({ username: req.auth.username }, (err, user) => {
   //   if (err) {
   //     return res.status(500).json({
