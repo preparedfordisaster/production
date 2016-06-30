@@ -3,12 +3,15 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const passportLocalMongooseEmail = require('passport-local-mongoose-email');
 
 var userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   findHash: { type: String, unique: true }
 });
+
+userSchema.plugin(passportLocalMongooseEmail);
 
 userSchema.methods.generateHash = function(password) {
   return this.password = bcrypt.hashSync(password, 9);
