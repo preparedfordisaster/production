@@ -20,9 +20,9 @@ const MyPlan = new React.createClass({
         <label>ADDRESS LINE 2</label>
         <input type="text" name="streetAddressPt2" autoComplete="address-line2"></input>
         <label>CITY</label>
-        <input type="text" name="city" autoComplete="locality"></input>
+        <input type="text" name="city" autoComplete="address-level2"></input>
         <label>STATE</label>
-        <input type="text" name="state" autoComplete="region"></input>
+        <input type="text" name="state" autoComplete="address-level1"></input>
         <label>POSTAL CODE</label>
         <input type="text" name="primaryPhone" autoComplete="postal-code"></input>
         <button className="rally" id="user-rally">ADD WORK/SCHOOL RALLY POINT</button>

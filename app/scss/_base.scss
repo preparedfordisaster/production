@@ -9,8 +9,17 @@ button {
 
 body {
   background-image: url(/img/gloomy.jpeg);
+  background-size: cover;
+  background-attachment: fixed;
 }
+
 
 main {
   min-height: 200px;
+  width: 80%;
+  background: $background;
+  border-radius: $radius;
+  margin: 100px auto 10px;
+  display: flex;
+  align-items: center;
 }
