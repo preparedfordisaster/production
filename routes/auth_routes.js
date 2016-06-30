@@ -19,9 +19,18 @@ router.post('/signup', bodyParser, (req, res) => {
   User.register(new User({ username: req.body.username }), password, (err, user) => {
     password = null;
 
-    if (err) return console.log(err);
-    res.status(200).json({
-      token: jwt.sign({ idd: user.hash }, process.env.APP_SECRET)
+    if (err) return res.status(500).json({ msg: 'could not create user' });
+
+    // ***NOTE***
+    // user.isAuthenticated = true is currently bypassing the email validation
+    // layer.  once the email validation is set up, this assignment and the
+    // user.save method call can be removed.
+    user.isAuthenticated = true;
+    user.save((err) => {
+      if (err) return res.status(500).json({ msg: 'saving err' });
+      res.status(200).json({
+        token: jwt.sign({ idd: user.hash }, process.env.APP_SECRET)
+      });
     });
   });
 });
