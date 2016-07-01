@@ -32,7 +32,10 @@
     "handlebars": "^4.0.5",
     "jsonwebtoken": "^6.2.0",
     "mongoose": "^4.4.14",
-    "nodemailer": "^2.3.2"
+    "nodemailer": "^2.3.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose-email": "^0.1.2"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
