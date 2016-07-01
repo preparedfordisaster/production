@@ -1,28 +1,176 @@
+
+{
+  "homeAddress": {
+    "streetAddress": "elk",
+    "streetAddressPt2": "elk",
+    "city": "elk",
+    "state": "elk",
+    "zip": 1234
+  },
+  "Leader" : {
+    "relationship": "self",
+    "firstName": "Esther",
+    "lastName": "beame",
+    "email": "nowhere@loopback.com",
+    "primaryPhone": "elk",
+    "secondaryPhone": "elk",
+    "height": "9'1\"",
+    "weight": "501lbs",
+    "workSchoolName": "Bertha",
+    "workSchoolAddress": {
+      "streetAddress": "102345 First Street",
+      "streetAddressPt2": "Sesame",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98107"
+    },
+    "birthYear": 1902,
+    "workSchoolRally": {
+      "streetAddress": "1390 First Street",
+      "streetAddressPt2": "Sesame",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98101"
+    }
+  },
+  "neighborhood": {
+    "zip": "98101",
+    "name": "whistletown",
+    "neighborhoodRally": {
+      "streetAddress": "12309 Sesame Street",
+      "streetAddressPt2": "Basement",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98103"
+    }
+  },
+  "householdMembers": [{
+    "relationship": "Son",
+    "firstName": "SonsName",
+    "lastName": "lastName",
+    "email": "sonsEmailAddress@gmail.com",
+    "primaryPhone": "555-555-5555",
+    "secondaryPhone": "555-555-5555",
+    "height": "4'3\"",
+    "weight": "100",
+    "workSchoolName": "Safetown Elementary",
+    "workSchoolAddress": {
+      "streetAddress": "1555 RightOutSideHouse St.",
+      "streetAddressPt2": "1100 FartherFromHome Ave.",
+      "city": "Safetown",
+      "state": "Washington",
+      "zip": "98105"
+    },
+    "birthYear": 2009,
+    "workSchoolRally": {
+      "streetAddress": "55158 RightOutSideHouse St.",
+      "streetAddressPt2": "1010 FartherFromHome Ave.",
+      "city": "Safetown",
+      "state": "Washington",
+      "zip": "98105"
+    }
+  },
+  {
+    "relationship": "Partner",
+    "firstName": "partnersFirstName",
+    "lastName": "lastName",
+    "email": "partnersEmailAddress@gmail.com",
+    "primaryPhone": "555-555-5555",
+    "secondaryPhone": "555-555-5555",
+    "height": "5'10\"",
+    "weight": "150",
+    "workSchoolName": "Safetown Inc.",
+    "workSchoolAddress": {
+      "streetAddress": "5559 RightOutSideHouse St.",
+      "streetAddressPt2": "100 FartherFromHome Ave.",
+      "city": "Safetown",
+      "state": "Washington",
+      "zip": "98105"
+    },
+    "birthYear": 1985,
+    "workSchoolRally": {
+      "streetAddress": "5559 RightOutSideHouse St.",
+      "streetAddressPt2": "100 FartherFromHome Ave.",
+      "city": "Safetown",
+      "state": "Washington",
+      "zip": "98105"
+    }
+  }],
+  "ice": [{
+    "firstName": "IceName",
+    "lastName": "lastName",
+    "email": "icesEmailAddress@gmail.com",
+    "primaryPhone": "555-555-5555",
+    "secondaryPhone": "555-555-5555",
+    "address" : {
+      "streetAddress": "555 IcesStreet St.",
+      "streetAddressPt2": "100 FartherFromIce Ave.",
+      "city": "Safetown",
+      "state": "Washington",
+      "zip": "98105"
+    }
+  }],
+  "rallyPoints": {
+    "immediate": "Field near House",
+    "rallyAddress": {
+      "StreetAddress": "555 RightOutSideHouse St.",
+      "StreetAddressPt2": "100 FartherFromHome Ave.",
+      "City": "Safetown",
+      "State": "Washington",
+      "Zip": "98105"
+    }
+  },
+  "emergencykit": {
+    "location": "Front Closet",
+    "baskeKit": {
+      "water": true,
+      "food": true,
+      "noaaWeatherRadio": true,
+      "flashlight": true,
+      "extraBatteries": true,
+      "firstAidKit": true,
+      "whistle": false,
+      "dustMask": true,
+      "sheetingAndDuctTape": true,
+      "moistTowelettes": true,
+      "garbageBagsAndPlasticTies": false,
+      "wrenchOrPliers": true,
+      "canOpener": true,
+      "localMaps": true
+    },
+    "addOns": {
+      "Blankets": true
+    }
+  }
+}
+
+
+
 {
   "firstName": "Esther",
   "lastName": "beame",
   "email": "nowhere@loppback.com",
-  "primaryPhone": "moose",
-  "secondaryPhone": "moose",
-  "streetAddress": "moose",
-  "streetAddressPt2": "moose",
-  "city": "moose",
-  "state": "moose",
+  "primaryPhone": "elk",
+  "secondaryPhone": "elk",
+  "streetAddress": "elk",
+  "streetAddressPt2": "elk",
+  "city": "elk",
+  "state": "elk",
   "zip": 1234,
   "householdMembers": [{
     "relationship": "brother",
     "firstName": "David",
     "lastName": "Beame",
     "email": "davidbeame",
-    "primaryPhone": "moose",
-    "secondaryPhone": "moose",
-    "height": "moose",
-    "weight": "moose",
-    "workSchoolName": "moose",
-    "streetAddress": "moose",
-    "streetAddressPt2": "moose",
-    "city": "moose",
-    "state": "moose",
+    "primaryPhone": "elk",
+    "secondaryPhone": "elk",
+    "height": "elk",
+    "weight": "elk",
+    "workSchoolName": "elk",
+    "streetAddress": "elk",
+    "streetAddressPt2": "elk",
+    "city": "elk",
+    "state": "elk",
     "zip": 1234,
     "birthYear": 1234
   },
@@ -31,28 +179,28 @@
     "firstName": "kat",
     "lastName": "beame",
     "email": "katBeame",
-    "primaryPhone": "moose",
-    "secondaryPhone": "moose",
-    "height": "moose"
+    "primaryPhone": "elk",
+    "secondaryPhone": "elk",
+    "height": "elk"
   }],
   "ice": [{
     "firstName": "Duck",
     "lastName": "Tree",
-    "email": "moose",
-    "primaryPhone": "moose",
-    "secondaryPhone": "moose",
-    "streetAddress": "moose",
-    "streetAddressPt2": "moose",
-    "city": "moose",
-    "state": "moose",
+    "email": "elk",
+    "primaryPhone": "elk",
+    "secondaryPhone": "elk",
+    "streetAddress": "elk",
+    "streetAddressPt2": "elk",
+    "city": "elk",
+    "state": "elk",
     "zip": 1234
   }],
   "rallyPoints": {
-    "immediate": "moose",
-    "rallyStreetAddress": "moose",
-    "rallyStreetAddressPt2": "moose",
-    "rallyCity": "moose",
-    "rallyState": "moose",
+    "immediate": "elk",
+    "rallyStreetAddress": "elk",
+    "rallyStreetAddressPt2": "elk",
+    "rallyCity": "elk",
+    "rallyState": "elk",
     "rallyZip": 1234
   },
   "emergencykit": {
