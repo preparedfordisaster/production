@@ -43,7 +43,7 @@ const Ice = mongoose.model('Ice', iceSchema);
 var neighborhoodSchema = new mongoose.Schema({
   zip: { type: Number, required: true },
   name: { type: String, required: true },
-  neighborhoodRally: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' }
+  neighborhoodRally: [addressSchema]
 });
 
 const Neighborhood = mongoose.model('Neighborhood', neighborhoodSchema);
