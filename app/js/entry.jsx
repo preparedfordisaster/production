@@ -11,6 +11,7 @@ ReactDOM.render(
     <ReactRouter.Route path='/register' component={Lib.Register}></ReactRouter.Route>
     <ReactRouter.Route path='/home' component={Lib.Home}></ReactRouter.Route>
     <ReactRouter.Route path='/myplan' component={Lib.MyPlan}></ReactRouter.Route>
+    <ReactRouter.Route path='*' component={Lib.NotFound}></ReactRouter.Route>
   </ReactRouter.Router>,
   document.querySelector('.app')
 );

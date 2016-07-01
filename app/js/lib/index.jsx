@@ -5,5 +5,6 @@ module.exports = {
   Login: require('./login.jsx'),
   Register: require('./register.jsx'),
   Home: require('./home.jsx'),
-  MyPlan: require('./myplan.jsx')
+  MyPlan: require('./myplan.jsx'),
+  NotFound: require('./error.jsx')
 };
