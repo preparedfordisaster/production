@@ -1,4 +1,6 @@
+# execution directories
 build
+db
 
 # Logs
 logs

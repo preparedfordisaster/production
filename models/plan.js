@@ -8,6 +8,8 @@ var addressSchema = new mongoose.Schema({
   zip: Number
 });
 
+const Address = mongoose.model('Address', addressSchema);
+
 var baseKitSchema = new mongoose.Schema({
   water: { type: Boolean, required: true },
   food: { type: Boolean, required: true },
@@ -25,54 +27,62 @@ var baseKitSchema = new mongoose.Schema({
   localMaps: { type: Boolean, required: true }
 });
 
+const BaseKit = mongoose.model('BaseKit', baseKitSchema);
+
 var iceSchema = new mongoose.Schema({
-  firstName: { contentType: String, required: true },
-  lastName: { contentType: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
   email: String,
-  primaryPhone: { contentType: String, required: true },
+  primaryPhone: { type: String, required: true },
   secondaryPhone: String,
-  address: addressSchema
+  address: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' }
 });
 
+const Ice = mongoose.model('Ice', iceSchema);
+
 var neighborhoodSchema = new mongoose.Schema({
-  zip: { contentType: Number, required: true },
-  name: { contentType: String, required: true },
+  zip: { type: Number, required: true },
+  name: { type: String, required: true },
   neighborhoodRally: [addressSchema]
 });
 
+const Neighborhood = mongoose.model('Neighborhood', neighborhoodSchema);
+
 var personSchema = new mongoose.Schema({
-  relationship: { contentType: String, required: true },
-  firstName: { contentType: String, required: true },
-  lastName: { contentType: String, required: true },
+  relationship: { type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
   email: String,
   primaryPhone: String,
   secondaryPhone: String,
   height: String,
   weight: String,
-  picture: { data: Buffer, contentType: String },
+  picture: { data: Buffer, type: String },
   workSchoolName: String,
-  workSchoolAddress: addressSchema,
+  workSchoolAddress: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' },
   birthYear: Number,
-  workSchoolRally: addressSchema
+  workSchoolRally: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' }
 });
 
+const Person = mongoose.model('Person', personSchema);
+
 var planSchema = new mongoose.Schema({
-    leader: personSchema,
-    neighborhood: neighborhoodSchema,
+    leader: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
+    neighborhood: { type: mongoose.Schema.Types.ObjectId, ref: 'Neighborhood' },
     reminderDate: { type: Date, default: Date() },
     reminderFrequency: { type: Number, default: 91 },
     householdMembers: [personSchema],
-    ice: [iceSchema],
+    ice: { type: mongoose.Schema.Types.ObjectId, ref: 'Ice' },
     rallyPoints: {
       immediate: String,
-      rallyAddress: addressSchema
+      rallyAddress: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' }
     },
     emergencykit: {
       location: String,
-      baseKit: baseKitSchema,
+      baseKit: { type: mongoose.Schema.Types.ObjectId, ref: 'BaseKit' },
       addOns: {},
       kitReminderDate: Number
     }
   });
 
-  module.exports = exports = mongoose.model('Plan', planSchema);
+module.exports = exports = mongoose.model('Plan', planSchema);

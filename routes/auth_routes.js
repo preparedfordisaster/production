@@ -1,7 +1,6 @@
 const express = require('express');
 const User = require(__dirname + '/../models/user');
 const bodyParser = require('body-parser').json();
-const jwt = require('jsonwebtoken');
 const basicHTTP = require(__dirname + '/../lib/basic_http');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -26,10 +25,11 @@ router.post('/signup', bodyParser, (req, res) => {
     // layer.  once the email validation is set up, this assignment and the
     // user.save method call can be removed.
     user.isAuthenticated = true;
-    user.save((err) => {
+    user.save((err, user) => {
       if (err) return res.status(500).json({ msg: 'saving err' });
-      res.status(200).json({
-        token: jwt.sign({ idd: user.hash }, process.env.APP_SECRET)
+      user.generateToken((err, token) => {
+        if (err) return res.status(500).json({ msg: 'could not generate token' });
+        res.json({ token });
       });
     });
   });
@@ -37,7 +37,8 @@ router.post('/signup', bodyParser, (req, res) => {
 
 router.get('/signin', basicHTTP, passport.authenticate('local', { session: false }),
 (req, res) => {
-  res.status(200).json({
-    token: jwt.sign({ idd: req.user.hash }, process.env.APP_SECRET)
+  req.user.generateToken((err, token) => {
+    if (err) return res.status(500).json({ msg: 'could not generate token' });
+    res.json({ token });
   });
 });
