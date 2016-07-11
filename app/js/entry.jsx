@@ -2,6 +2,8 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const ReactRouter = require('react-router');
 const Components = require(__dirname + '/components/index.jsx');
+const Route = ReactRouter.Route;
+const browserHistory = ReactRouter.browserHistory;
 
 
 ReactDOM.render(
