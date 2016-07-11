@@ -11,6 +11,7 @@ planRouter.get('/plan', jwtAuth, (req, res) => {
   Plan.find({ memberID: req.user._id }, (err, data) => {
     if (err) return errorHandler(err, res);
     res.status(200).json(data);
+    console.log(data);
   });
 });
 
@@ -20,6 +21,7 @@ planRouter.post('/plan', jwtAuth, bodyParser, (req, res) => {
   newPlan.save((err, data) => {
     if (err) return errorHandler(err, res);
     res.status(200).json(data);
+    console.log(data);
   });
 });
 
