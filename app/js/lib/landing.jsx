@@ -1,11 +1,12 @@
 const React = require('react');
+const Link = require('react-router').Link;
 
 const Landing = new React.createClass({
   render: function() {
     return (
       <section>
-        <button><a href="#/login">LOGIN</a></button>
-        <button><a href="#/register">REGISTER</a></button>
+        <button><Link to="#/login">LOGIN</Link></button>
+        <button><Link to="#/register">REGISTER</Link></button>
       </section>
     );
   }
