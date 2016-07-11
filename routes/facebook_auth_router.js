@@ -1,22 +1,23 @@
 const express = require('express');
 const User = require(__dirname + '/../models/user');
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
 var googleAuthRouter = module.exports = exports = express.Router();
 
-passport.use(new GoogleStrategy(
+passport.use(new FacebookStrategy(
   {
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:5555/auth/google/callback'
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: 'http://localhost:5555/auth/facebook/callback',
+    profileFields: ['id', 'displayName', 'email']
   }, (accessToken, refreshToken, profile, done) => {
     User.findOne({ username: profile.emails[0].value }, (err, user) => {
       if (err) return done(err);
       if (!user) {
         return User.register(new User({ username: profile.emails[0].value }), profile.id,
         (err, user) => {
-          if (err) return console.log(err);
+          if (err) return done(err, user);
 
           // ***NOTE***
           // user.isAuthenticated = true is currently bypassing the email validation
@@ -33,19 +34,14 @@ passport.use(new GoogleStrategy(
   }
 ));
 
-googleAuthRouter.get('/google', passport.authenticate('google', {
+googleAuthRouter.get('/facebook', passport.authenticate('facebook', {
   session: false,
-  scope:
-    [
-      'https://www.googleapis.com/auth/plus.login',
-      'https://www.googleapis.com/auth/plus.profile.emails.read'
-    ]
-  }
+  scope: 'email'
+}, () => {}
 ));
 
-googleAuthRouter.get('/google/callback', passport.authenticate('google', { session: false }),
+googleAuthRouter.get('/facebook/callback', passport.authenticate('facebook', { session: false }),
 (req, res) => {
-  console.log(req.user);
   req.user.generateToken((err, token) => {
     if (err) return res.status(500).json({ msg: 'could not generate token' });
     res.redirect('/auth?token=' + token);
