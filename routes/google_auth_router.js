@@ -15,7 +15,7 @@ passport.use(new GoogleStrategy(
       if (err) return done(err);
       if (!user) {
         User.register(new User({ username: profile.emails[0].value }), profile.id, (err, user) => {
-          if (err) return done(err);
+          if (err) return done(err, user);
 
           // ***NOTE***
           // user.isAuthenticated = true is currently bypassing the email validation
