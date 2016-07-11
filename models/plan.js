@@ -5,7 +5,7 @@ var addressSchema = new mongoose.Schema({
   streetAddressPt2: String,
   city: String,
   state: String,
-  zip: Number
+  zip: String
 });
 
 const Address = mongoose.model('Address', addressSchema);
@@ -38,10 +38,8 @@ var iceSchema = new mongoose.Schema({
   address: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' }
 });
 
-const Ice = mongoose.model('Ice', iceSchema);
-
 var neighborhoodSchema = new mongoose.Schema({
-  zip: { type: Number, required: true },
+  zip: { type: String, required: true },
   name: { type: String, required: true },
   neighborhoodRally: [addressSchema]
 });
@@ -67,12 +65,13 @@ var personSchema = new mongoose.Schema({
 const Person = mongoose.model('Person', personSchema);
 
 var planSchema = new mongoose.Schema({
+    homeAddress: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' },
     leader: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
     neighborhood: { type: mongoose.Schema.Types.ObjectId, ref: 'Neighborhood' },
     reminderDate: { type: Date, default: Date() },
     reminderFrequency: { type: Number, default: 91 },
     householdMembers: [personSchema],
-    ice: { type: mongoose.Schema.Types.ObjectId, ref: 'Ice' },
+    ice: [iceSchema],
     rallyPoints: {
       immediate: String,
       rallyAddress: { type: mongoose.Schema.Types.ObjectId, ref: 'Address' }
@@ -81,7 +80,7 @@ var planSchema = new mongoose.Schema({
       location: String,
       baseKit: { type: mongoose.Schema.Types.ObjectId, ref: 'BaseKit' },
       addOns: {},
-      kitReminderDate: Number
+      kitReminderDate: { type: Date, default: Date() },
     }
   });
 
