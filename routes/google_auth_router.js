@@ -11,10 +11,10 @@ passport.use(new GoogleStrategy(
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:5555/auth/google/callback'
   }, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ username: profile.emails[0].value }, (err, user) => {
+    User.findOne({ username: 'google' + profile.id }, (err, user) => {
       if (err) return done(err);
       if (!user) {
-        return User.register(new User({ username: profile.emails[0].value }), profile.id,
+        return User.register(new User({ username: 'google' + profile.id }), profile.id,
         (err, user) => {
           if (err) return console.log(err);
 
@@ -37,8 +37,7 @@ googleAuthRouter.get('/google', passport.authenticate('google', {
   session: false,
   scope:
     [
-      'https://www.googleapis.com/auth/plus.login',
-      'https://www.googleapis.com/auth/plus.profile.emails.read'
+      'https://www.googleapis.com/auth/plus.login'
     ]
   }
 ));

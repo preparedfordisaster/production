@@ -10,12 +10,12 @@ passport.use(new FacebookStrategy(
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: 'http://localhost:5555/auth/facebook/callback',
-    profileFields: ['id', 'displayName', 'email']
+    profileFields: ['id', 'displayName']
   }, (accessToken, refreshToken, profile, done) => {
-    User.findOne({ username: profile.emails[0].value }, (err, user) => {
+    User.findOne({ username: 'facebook' + profile.id }, (err, user) => {
       if (err) return done(err);
       if (!user) {
-        return User.register(new User({ username: profile.emails[0].value }), profile.id,
+        return User.register(new User({ username: 'facebook' + profile.id }), profile.id,
         (err, user) => {
           if (err) return done(err, user);
 
@@ -34,10 +34,7 @@ passport.use(new FacebookStrategy(
   }
 ));
 
-googleAuthRouter.get('/facebook', passport.authenticate('facebook', {
-  session: false,
-  scope: 'email'
-}, () => {}
+googleAuthRouter.get('/facebook', passport.authenticate('facebook', { session: false }, () => {}
 ));
 
 googleAuthRouter.get('/facebook/callback', passport.authenticate('facebook', { session: false }),
