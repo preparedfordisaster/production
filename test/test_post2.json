@@ -6,7 +6,7 @@
     "state": "moose",
     "zip": 1234
   },
-  "Leader" : {
+  "leader" : {
     "relationship": "self",
     "firstName": "Jim",
     "lastName": "beame",
@@ -121,7 +121,7 @@
   },
   "emergencykit": {
     "location": "Front Closet",
-    "baskeKit": {
+    "baseKit": {
       "water": true,
       "food": true,
       "noaaWeatherRadio": true,
