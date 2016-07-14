@@ -3,6 +3,7 @@ const chai = require('chai');
 const expect = chai.expect;
 chai.use(chaiHTTP);
 const request = chai.request;
+const fs = require('fs');
 const mongoose = require('mongoose');
 const port = process.env.PORT = 1234;
 const server = require(__dirname + '/../lib/_server');
@@ -17,33 +18,29 @@ describe('email plan test', () => {
   });
 
   before((done) => {
-    var user = new User({ username: 'Rachel', password: 246 });
-    user.save((err, data) => {
-      if (err) throw err;
-      this.user = data;
-      this.user.generateToken((err, token) => {
-        if (err) throw err;
-        this.token = token;
-        done();
+    User.register(new User({ username: 'Rachel' }), '246', (err, user) => {
+      if (err) return console.log(err);
+
+      // ***NOTE***
+      // user.isAuthenticated = true is currently bypassing the email validation
+      // layer.  once the email validation is set up, this assignment and the
+      // user.save method call can be removed.
+      user.isAuthenticated = true;
+      user.save((err, user) => {
+        if (err) return console.log(err);
+        user.generateToken((err, token) => {
+          if (err) return console.log(err);
+          this.token = token;
+          done();
+        });
       });
     });
   });
 
   before((done) => {
-    var newPlan = new Plan({
-      firstName: 'test', lastName: 'test', email: 'phillip.d.nguyen23@gmail.com',
-      'emergencykit.water': true, 'emergencykit.food': true,
-      'emergencykit.noaaWeatherRadio': true,
-      'emergencykit.flashlight': true, 'emergencykit.extraBatteries': true,
-      'emergencykit.firstAidKit': true,
-      'emergencykit.whistle': true, 'emergencykit.dustMask': true,
-      'emergencykit.sheetingAndDuctTape': true,
-      'emergencykit.moistTowelettes': true,
-      'emergencykit.garbageBagsAndPlasticTies': true, 'emergencykit.wrenchOrPliers': true,
-      'emergencykit.canOpener': true, 'emergencykit.localMaps': true }
-    );
+    var newPlan = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post1.json').toString()));
     newPlan.save((err) => {
-      if (err) throw err;
+      if (err) return console.log(err);
       done();
     });
   });
@@ -56,15 +53,15 @@ describe('email plan test', () => {
     });
   });
 
-it('should send an email with the user plan', (done) => {
-  request('localhost:' + port)
-  .post('/api/email')
-  .set('token', this.token)
-  .end((err, res) => {
-    expect(err).to.eql(null);
-    expect(res.body.msg).to.eql('Email Sent!');
-    expect(res.status).to.eql(200);
-    done();
+  it('should send an email with the user plan', (done) => {
+    request('localhost:' + port)
+    .post('/api/email')
+    .set('token', this.token)
+    .end((err, res) => {
+      expect(err).to.eql(null);
+      expect(res.body.msg).to.eql('Email Sent!');
+      expect(res.status).to.eql(200);
+      done();
+    });
   });
-});
 });
