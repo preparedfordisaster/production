@@ -11,7 +11,7 @@ describe('Testing reminder email:', () => {
     mongoose.connect(process.env.MONGODB_URI);
     done();
   });
-  
+
   before((done) => {
     var counter = 0;
     var plan1 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post1.json').toString()));
