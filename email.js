@@ -6,7 +6,7 @@ const errorHandler = require(__dirname + '/lib/errorHandler.js');
 const mongoose = require('mongoose');
 
 function check(cb) {
-  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/plan_db', (err) => {
+  mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/plan_db', (err, done) => {
     if (err) return errorHandler(err);
     var now = new Date();
     Plan.find( { 'reminderDate': { $lt: now } }, (err, remindArray) => {
@@ -37,15 +37,14 @@ function check(cb) {
         var timer = setInterval(() => {
           Plan.find( { 'reminderDate': { $lt: now } }, (err, checkArray) => {
             if (err) console.log(err);
-            console.log(checkArray);
+            console.log(checkArray.length);
             timerCounter++;
-            if ( checkArray.length === 0 || timerCounter === 30) {
-              mongoose.disconnect(() => {
-                clearInterval(timer);
-                var callback = cb || function() {};
-                // for testing purposes only
-                callback();
-              });
+            if ( checkArray.length === 0 || timerCounter === 5) {
+              mongoose.disconnect(done);
+              clearInterval(timer);
+              var callback = cb || function() {};
+              // for testing purposes only
+              callback();
             }
           });
         }, 1000);
