@@ -51,7 +51,7 @@ describe('Testing reminder email:', () => {
 
   it('should send emails', (done) => {
     email(done);
-  });
+  }).timeout(10000);
 
   it('should update the past reminderDates to future times', (done) => {
     var now = new Date();
