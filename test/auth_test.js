@@ -19,8 +19,9 @@ describe('authentication works', () => {
 
   after((done) => {
     mongoose.connection.db.dropDatabase(() => {
-      mongoose.disconnect(done);
-      server.close();
+      mongoose.disconnect(() => {
+        server.close(done);
+      });
     });
   });
 
