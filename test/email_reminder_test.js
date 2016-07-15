@@ -18,8 +18,7 @@ describe('Testing reminder email:', () => {
     var plan2 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post2.json').toString()));
     var plan3 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post3.json').toString()));
 
-    plan1.save((err, data) => {
-      console.log(data);
+    plan1.save((err) => {
       if (err) console.log(err);
       counter++;
       if (counter === 3) {

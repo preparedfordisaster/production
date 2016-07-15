@@ -37,6 +37,7 @@ function check(cb) {
         var timer = setInterval(() => {
           Plan.find( { 'reminderDate': { $lt: now } }, (err, checkArray) => {
             if (err) console.log(err);
+            console.log(checkArray);
             timerCounter++;
             if ( checkArray.length === 0 || timerCounter === 30) {
               mongoose.disconnect(done);
