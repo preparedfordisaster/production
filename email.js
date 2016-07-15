@@ -28,7 +28,7 @@ function check(cb) {
             process.stdout.write('Message sent: ' + info.response + '\n');
           });
           value.reminderDate.setDate(value.reminderDate.getDate() + value.reminderFrequency);
-          var updateData = Object.assign({}, value);
+          var updateData = Object.assign({}, value.toObject());
           delete updateData._id;
           Plan.update({ _id: value._id }, updateData, (err) => {
             if (err) return console.log(err);
