@@ -15,32 +15,32 @@ describe('Testing reminder email:', () => {
   before((done) => {
     var counter = 0;
     var plan1 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post1.json').toString()));
-    // var plan2 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post2.json').toString()));
-    // var plan3 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post3.json').toString()));
+    var plan2 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post2.json').toString()));
+    var plan3 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post3.json').toString()));
 
     plan1.save((err) => {
-      if (err) return console.log(err);
+      if (err) console.log(err);
       counter++;
-      if (counter === 1) {
+      if (counter === 3) {
         mongoose.disconnect(done);
       }
     });
 
-    // plan2.save((err) => {
-    //   if (err) return console.log(err);
-    //   counter++;
-    //   if (counter === 3) {
-    //     mongoose.disconnect(done);
-    //   }
-    // });
-    //
-    // plan3.save((err) => {
-    //   if (err) return console.log(err);
-    //   counter++;
-    //   if (counter === 3) {
-    //       mongoose.disconnect(done);
-    //     }
-    // });
+    plan2.save((err) => {
+      if (err) console.log(err);
+      counter++;
+      if (counter === 3) {
+        mongoose.disconnect(done);
+      }
+    });
+
+    plan3.save((err) => {
+      if (err) console.log(err);
+      counter++;
+      if (counter === 3) {
+          mongoose.disconnect(done);
+        }
+    });
   });
 
   after((done) => {
