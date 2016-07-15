@@ -19,7 +19,7 @@ describe('Testing reminder email:', () => {
     var plan3 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post3.json').toString()));
 
     plan1.save((err) => {
-      if (err) return console.log(err);
+      if (err) console.log(err);
       counter++;
       if (counter === 3) {
         mongoose.disconnect(done);
@@ -27,7 +27,7 @@ describe('Testing reminder email:', () => {
     });
 
     plan2.save((err) => {
-      if (err) return console.log(err);
+      if (err) console.log(err);
       counter++;
       if (counter === 3) {
         mongoose.disconnect(done);
@@ -35,7 +35,7 @@ describe('Testing reminder email:', () => {
     });
 
     plan3.save((err) => {
-      if (err) return console.log(err);
+      if (err) console.log(err);
       counter++;
       if (counter === 3) {
           mongoose.disconnect(done);
@@ -51,7 +51,7 @@ describe('Testing reminder email:', () => {
 
   it('should send emails', (done) => {
     email(done);
-  });
+  }).timeout(10000);
 
   it('should update the past reminderDates to future times', (done) => {
     var now = new Date();

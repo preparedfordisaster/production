@@ -18,7 +18,7 @@ describe('plan routes server', () => {
   });
 
   before((done) => {
-    User.register(new User({ username: 'Rachel' }), '246', (err, user) => {
+    User.register(new User({ username: 'Rachel2' }), '246', (err, user) => {
       if (err) return console.log(err);
 
       // ***NOTE***

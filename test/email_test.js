@@ -38,7 +38,7 @@ describe('email plan test', () => {
   });
 
   before((done) => {
-    var newPlan = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post1.json').toString()));
+    var newPlan = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post2.json').toString()));
     newPlan.save((err) => {
       if (err) return console.log(err);
       done();
