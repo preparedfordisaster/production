@@ -1,19 +1,23 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const ReactRouter = require('react-router');
-const Components = require(__dirname + '/components/index.jsx');
-const Route = ReactRouter.Route;
-const browserHistory = ReactRouter.browserHistory;
+import React from 'react';
+import { render } from 'react-dom';
 
+import Components from './components/views/index.jsx';
 
-ReactDOM.render(
-  <ReactRouter.Router>
-    <ReactRouter.Route path='/' component={Components.Landing}></ReactRouter.Route>
-    <ReactRouter.Route path='/login' component={Components.Login}></ReactRouter.Route>
-    <ReactRouter.Route path='/register' component={Components.Register}></ReactRouter.Route>
-    <ReactRouter.Route path='/home' component={Components.Home}></ReactRouter.Route>
-    <ReactRouter.Route path='/myplan' component={Components.MyPlan}></ReactRouter.Route>
-    <ReactRouter.Route path='*' component={Components.NotFound}></ReactRouter.Route>
-  </ReactRouter.Router>,
-  document.querySelector('.app')
-);
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
+//import store, { history } from './store';
+
+const router = (
+
+    <Router history={browserHistory}>
+      <Route path="/" component={Components.Main}>
+        <IndexRoute component={Components.Landing}></IndexRoute>
+        <Route path="/register" component={Components.Register}></Route>
+        <Route path="/login" component={Components.Login}></Route>
+        <Route path="/home" componet={Components.MyPlanContainer}></Route>
+      </Route>
+    </Router>
+
+)
+
+render(router, document.getElementById('app'));

@@ -1,10 +1,11 @@
 const React = require('react');
 
 module.exports = {
+  Main: require('./Main.jsx'),
   Landing: require('./landing.jsx'),
   Login: require('./login.jsx'),
   Register: require('./register.jsx'),
-  Home: require('./home.jsx'),
+  MyPlanContainer: require('./MyPlanContainer.jsx'),
   MyPlan: require('./myplan.jsx'),
   NotFound: require('./error.jsx')
 };

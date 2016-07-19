@@ -1,6 +1,7 @@
-const React = require('react');
+import React from 'react';
+import MyPlan from './myplan.jsx';
 
-const Home = new React.createClass({
+const MyPlanContainer = new React.createClass({
   getInitialState: function() {
     return {
       plan: {}
@@ -18,11 +19,10 @@ const Home = new React.createClass({
       <section>
         <button><a href="#/login">EMAIL ME MY PLAN</a></button>
         <button><a href="#/myplan">EDIT OR CREATE MY DISASTER PLAN</a></button>
-        <article id="plan-summary">
-        </article>
+        <MyPlan></MyPlan>
       </section>
     );
   }
 });
 
-module.exports = Home;
+module.exports = MyPlanContainer;

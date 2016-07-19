@@ -1,6 +1,6 @@
 const React = require('react');
 const BaseKit = require('./BaseKit.jsx');
-const Home = require('./home.jsx');
+
 
 const MyPlan = new React.createClass({
   createPlan: function(event) {
