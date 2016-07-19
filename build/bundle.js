@@ -56,11 +56,11 @@
 	ReactDOM.render(React.createElement(
 	  ReactRouter.Router,
 	  { history: browserHistory },
-	  React.createElement(Route, { path: '/', component: Lib.Landing, history: browserHistory }),
-	  React.createElement(Route, { path: '/login', component: Lib.Login, history: browserHistory }),
-	  React.createElement(Route, { path: '/register', component: Lib.Register, history: browserHistory }),
-	  React.createElement(Route, { path: '/home', component: Lib.Home, history: browserHistory }),
-	  React.createElement(Route, { path: '/myplan', component: Lib.MyPlan, history: browserHistory })
+	  React.createElement(Route, { path: '/', component: Lib.Landing }),
+	  React.createElement(Route, { path: '/login', component: Lib.Login }),
+	  React.createElement(Route, { path: '/register', component: Lib.Register }),
+	  React.createElement(Route, { path: '/home', component: Lib.Home }),
+	  React.createElement(Route, { path: '/myplan', component: Lib.MyPlan })
 	), document.querySelector('.app'));
 
 /***/ },
