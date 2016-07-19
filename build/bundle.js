@@ -55,12 +55,12 @@
 	
 	ReactDOM.render(React.createElement(
 	  ReactRouter.Router,
-	  null,
-	  React.createElement(Route, { path: '/', component: Lib.Landing, history: browserHistory }),
-	  React.createElement(Route, { path: '/login', component: Lib.Login, history: browserHistory }),
-	  React.createElement(Route, { path: '/register', component: Lib.Register, history: browserHistory }),
-	  React.createElement(Route, { path: '/home', component: Lib.Home, history: browserHistory }),
-	  React.createElement(Route, { path: '/myplan', component: Lib.MyPlan, history: browserHistory })
+	  { history: browserHistory },
+	  React.createElement(Route, { path: '/', component: Lib.Landing }),
+	  React.createElement(Route, { path: '/login', component: Lib.Login }),
+	  React.createElement(Route, { path: '/register', component: Lib.Register }),
+	  React.createElement(Route, { path: '/home', component: Lib.Home }),
+	  React.createElement(Route, { path: '/myplan', component: Lib.MyPlan })
 	), document.querySelector('.app'));
 
 /***/ },
@@ -25965,7 +25965,7 @@
 	        null,
 	        React.createElement(
 	          Link,
-	          { to: '#/login' },
+	          { to: '/login' },
 	          'LOGIN'
 	        )
 	      ),
@@ -25974,7 +25974,7 @@
 	        null,
 	        React.createElement(
 	          Link,
-	          { to: '#/register' },
+	          { to: '/register' },
 	          'REGISTER'
 	        )
 	      )
@@ -26099,7 +26099,7 @@
 	        null,
 	        React.createElement(
 	          Link,
-	          { to: '#/login' },
+	          { to: '/login' },
 	          'EMAIL ME MY PLAN'
 	        )
 	      ),
@@ -26108,7 +26108,7 @@
 	        null,
 	        React.createElement(
 	          Link,
-	          { to: '#/myplan' },
+	          { to: '/myplan' },
 	          'EDIT OR CREATE MY DISASTER PLAN'
 	        )
 	      ),
