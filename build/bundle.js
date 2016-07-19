@@ -55,7 +55,7 @@
 	
 	ReactDOM.render(React.createElement(
 	  ReactRouter.Router,
-	  null,
+	  { history: browserHistory },
 	  React.createElement(Route, { path: '/', component: Lib.Landing, history: browserHistory }),
 	  React.createElement(Route, { path: '/login', component: Lib.Login, history: browserHistory }),
 	  React.createElement(Route, { path: '/register', component: Lib.Register, history: browserHistory }),
