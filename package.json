@@ -37,7 +37,9 @@
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose-email": "^0.1.2"
+    "passport-local-mongoose-email": "^0.1.2",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -53,6 +55,7 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router": "^2.5.1",
+    "redux-devtools": "^3.3.1",
     "webpack": "^1.13.1",
     "webpack-stream": "^3.2.0"
   }
