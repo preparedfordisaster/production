@@ -11,33 +11,36 @@ describe('Testing reminder email:', () => {
     mongoose.connect(process.env.MONGODB_URI);
     done();
   });
+
   before((done) => {
     var counter = 0;
     var plan1 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post1.json').toString()));
     var plan2 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post2.json').toString()));
     var plan3 = new Plan(JSON.parse(fs.readFileSync(__dirname + '/test_post3.json').toString()));
+
     plan1.save((err) => {
-      if (err) throw err;
+      if (err) console.log(err);
       counter++;
       if (counter === 3) {
         mongoose.disconnect(done);
       }
     });
+
     plan2.save((err) => {
-      if (err) throw err;
+      if (err) console.log(err);
       counter++;
       if (counter === 3) {
         mongoose.disconnect(done);
       }
     });
+
     plan3.save((err) => {
-      if (err) throw err;
+      if (err) console.log(err);
       counter++;
       if (counter === 3) {
           mongoose.disconnect(done);
         }
     });
-
   });
 
   after((done) => {
@@ -45,9 +48,11 @@ describe('Testing reminder email:', () => {
       mongoose.disconnect(done);
     });
   });
+
   it('should send emails', (done) => {
     email(done);
-  });
+  }).timeout(10000);
+
   it('should update the past reminderDates to future times', (done) => {
     var now = new Date();
     mongoose.connect(process.env.MONGODB_URI);

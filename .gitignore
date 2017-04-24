@@ -1,3 +1,6 @@
+# execution directories
+db
+
 # Logs
 logs
 *.log
